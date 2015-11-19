@@ -50,7 +50,8 @@ end
 
 include_recipe 'java::set_java_home'
 
-package 'tar'
+package 'tar' unless platform_family?('mac_os_x')
+package 'gnu-tar' if platform_family?('mac_os_x')
 
 java_ark 'jdk' do
   url tarball_url
